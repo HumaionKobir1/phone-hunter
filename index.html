@@ -5,18 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phone-Hunter</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
 
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-white">
     <header>
-        <h1 class="text-5xl text-center font-bold">Welcome to my Phone Hunter!</h1>
+        <h1 class="text-5xl text-center font-bold text-slate-900">Welcome to my Phone Hunter!</h1>
     </header>
     <main>
-        <section class="container mx-auto">
-            <div id="phone-container">
-                
+        <section class="container mx-auto mt-10 flex justify-center mb-7">
+            <div class="mb-3 flex gap-3 ">
+                <input id="search-field" type="email" class="form-control bg-white border-2 rounded-md w-96 p-3" placeholder="Search Your Phone">
+                <button onclick="searchBtn()" class="px-8 py-4 bg-emerald-500 rounded-xl text-white font-bold">Search</button>
+            </div>
+        </section>
+
+        <!-- display search result -->
+        <section class="container mx-auto ">
+            <div id="phone-container" class="grid md:grid-cols-3 gap-7">
+
             </div>
         </section>
     </main>
