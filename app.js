@@ -3,11 +3,21 @@ const loadPhones = async(searchText) => {
     const res = await fetch(url);
     const data = await res.json();
     displayPhones(data.data);
-
 }
+
 const displayPhones = phones => {
-    console.log(phones)
+    // console.log(phones)
     const phonesContainer = document.getElementById('phone-container');
+    phonesContainer.textContent = '';
+    // display 20 phone only
+    phones = phones.slice(0, 9);
+    const noPhone = document.getElementById('no-found-message');
+    if(phones.length === 0){
+        noPhone.classList.remove('hidden');
+    }
+    else{
+        noPhone.classList.add('hidden'); 
+    }
     phones.forEach(phone => {
         const phoneDiv = document.createElement('div');
         phoneDiv.innerHTML = `
@@ -34,4 +44,4 @@ function searchBtn(){
     loadPhones(searchText);
 }
 
-loadPhones()
+loadPhones('phone')
