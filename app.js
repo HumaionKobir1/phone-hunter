@@ -36,7 +36,8 @@ const displayPhones = (phones, dataLimit) => {
                     <h2 class="card-title text-lg font-bold text-slate-800">${phone.phone_name}</h2>
                     <p>If a dog chews shoes whose shoes does he choose?</p>
                     <div class="card-actions">
-                    <button onclick="loadPhoneDetails('')" class="px-8 py-4 bg-emerald-500 rounded-xl text-white font-bold">Buy Now</button>
+                    
+                    <label onclick="loadPhoneDetails('${phone.slug}')" for="my-modal-6" class="btn px-8 btn py-4 bg-emerald-500 rounded-xl text-white font-bold">Buy Now</label>
                     </div>
                 </div>
             </div>
@@ -83,9 +84,23 @@ function showAllBtn(){
     processSearch();
 }
 
-// const loadPhoneDetails = async id =>{
-//     const url = `https://openapi.programming-hero.com/api/phone/${data}`;
-//     const res = await fetch(url);
-//     const data = await res.json
-// }
-// loadPhones('')
+const loadPhoneDetails = async id =>{
+    const url = `https://openapi.programming-hero.com/api/phone/${id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayPhoneDetails(data.data);
+}
+
+const displayPhoneDetails = phone => {
+    console.log(phone);
+    const phoneDetails = document.getElementById('phone-details');
+    phoneDetails.innerHTML = `
+        <img class="rounded-xl mx-auto" src="${phone.image}"/>
+        <h3 class="font-bold mt-5 text-lg">Title: ${phone.name}</h3>
+        <p class="py-4"> Release Date: ${phone.releaseDate ? phone.releaseDate:  'No Resease Date Found'} </p>
+        <p class="py-4"> Storage: ${phone.mainFeatures ? phone.mainFeatures.storage : 'No Storage information found'} </p>
+
+        <p class="py-4">Bluetooth: ${phone.others ? phone.others.Bluetooth : 'No Bluetooth Information'}</p>
+    `
+}
+loadPhones('phone')
