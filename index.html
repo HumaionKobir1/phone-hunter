@@ -23,11 +23,15 @@
 
         <!-- display search result -->
         <section class="container mx-auto ">
-            <div id="phone-container" class="grid md:grid-cols-3 gap-7">
+            <div id="phone-container" class="grid md:grid-cols-3 justify-center items-center gap-7">
 
             </div>
             <div id="no-found-message" class="mt-4 hidden">
                 <h3 class="text-3xl text-yellow-700 text-center font-semibold">No Phone Found. Please  search a new Phone</h3>
+            </div>
+
+            <div id="show-all" class="text-center hidden mt-10">
+                <button onclick="showAllBtn()" class="bg-emerald-500 text-2xl font-semibold py-4 px-7 rounded-lg text-white">Show All</button>
             </div>
         </section>
         <!-- loader -->
