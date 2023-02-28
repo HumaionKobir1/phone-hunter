@@ -36,7 +36,7 @@ const displayPhones = (phones, dataLimit) => {
                     <h2 class="card-title text-lg font-bold text-slate-800">${phone.phone_name}</h2>
                     <p>If a dog chews shoes whose shoes does he choose?</p>
                     <div class="card-actions">
-                    <button class="px-8 py-4 bg-emerald-500 rounded-xl text-white font-bold">Buy Now</button>
+                    <button onclick="loadPhoneDetails('')" class="px-8 py-4 bg-emerald-500 rounded-xl text-white font-bold">Buy Now</button>
                     </div>
                 </div>
             </div>
@@ -61,6 +61,13 @@ function searchBtn(){
     processSearch(10);
 }
 
+// search input field enter key handler
+document.getElementById('search-field').addEventListener('keypress', function(e){
+    if(e.key === 'Enter') {
+        processSearch(10)
+    }
+});
+
 const toggleSpinner = isLoading => {
     const loaderSection = document.getElementById('loader');
     if(isLoading){
@@ -75,4 +82,10 @@ const toggleSpinner = isLoading => {
 function showAllBtn(){
     processSearch();
 }
+
+// const loadPhoneDetails = async id =>{
+//     const url = `https://openapi.programming-hero.com/api/phone/${data}`;
+//     const res = await fetch(url);
+//     const data = await res.json
+// }
 // loadPhones('')
